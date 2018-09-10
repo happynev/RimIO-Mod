@@ -58,6 +58,9 @@
     <Compile Include="RimIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>$(TargetDir)..\..\RimWorldWin64.exe -quicktest</PostBuildEvent>

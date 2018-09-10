@@ -30,19 +30,19 @@ namespace RimIO
         public SettingHandle<int> port;
         public SettingHandle<bool> enableDebug;
 
-        internal string getBaseHttpUrl()
+        internal string GetBaseHttpUrl()
         {
             return "http://" + ipAddress + ":" + port + "/";
         }
         
-        internal string getDataUrl()
+        internal string GetDataUrl()
         {
-            return getBaseHttpUrl() + "/GameData";
+            return GetBaseHttpUrl() + "/GameData";
         }
 
-        internal string getAssetUrl()
+        internal string GetAssetUrl()
         {
-            return getBaseHttpUrl() + "/Assets";
+            return GetBaseHttpUrl() + "/Assets";
         }
 
         public Dictionary<String, Texture2D> pawnPortraits = new Dictionary<string, Texture2D>();
@@ -105,13 +105,13 @@ namespace RimIO
             base.Tick(currentTick);
             if (settings.enableSending && currentTick % 60 == 1) //once per second on normal speed
             {
-                updatePawnPortraits();
+                UpdatePawnPortraits();
                 Thread sender = new Thread(unused => SendAsyncGameData(currentTick, settings));
                 sender.Start();
             }
         }
 
-        private void updatePawnPortraits()
+        private void UpdatePawnPortraits()
         {
             Stopwatch t = new Stopwatch();
             t.Start();
@@ -121,7 +121,7 @@ namespace RimIO
             {
                 if (p != null)
                 {
-                    settings.pawnPortraits.Add(p.ThingID, getPawnPortrait(p));
+                    settings.pawnPortraits.Add(p.ThingID, GetPawnPortrait(p));
                 }
             }
             t.Stop();
@@ -137,7 +137,7 @@ namespace RimIO
             t.Start();
             string logmsg = "rimlogger tick " + currentTick;
             string msg = CollectGameState(settings);
-            var request = (HttpWebRequest)WebRequest.Create(settings.getDataUrl());
+            var request = (HttpWebRequest)WebRequest.Create(settings.GetDataUrl());
             request.ContentType = "application/xml";
             request.Accept = "application/xml";
             request.Method = "POST";
@@ -155,7 +155,7 @@ namespace RimIO
             }
             catch (Exception e)
             {
-                Messages.Message(new Message("RimIO failed to POST to " + settings.getBaseHttpUrl() + " -->" + e.Message, MessageTypeDefOf.RejectInput));
+                Messages.Message(new Message("RimIO failed to POST to " + settings.GetBaseHttpUrl() + " -->" + e.Message, MessageTypeDefOf.RejectInput));
                 Messages.Message(new Message("Either fix or disable in Mod Settings or start the RimIO Companion App", MessageTypeDefOf.RejectInput));
             }
             t.Stop();
@@ -165,7 +165,7 @@ namespace RimIO
             }
         }
 
-        private Texture2D getPawnPortrait(Pawn p)
+        private Texture2D GetPawnPortrait(Pawn p)
         {
             RenderTexture tmpPortrait = PortraitsCache.Get(p, ColonistBarColonistDrawer.PawnTextureSize, ColonistBarColonistDrawer.PawnTextureCameraOffset, 1.28205f);
             RenderTexture.active = tmpPortrait;
