@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RimIO", "RimIO.csproj", "{99197C89-885B-4D6D-96F2-A82ED0916943}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99197C89-885B-4D6D-96F2-A82ED0916943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99197C89-885B-4D6D-96F2-A82ED0916943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99197C89-885B-4D6D-96F2-A82ED0916943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99197C89-885B-4D6D-96F2-A82ED0916943}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CD6651D-B50C-4570-8A8E-166BCEE38AD4}
+	EndGlobalSection
+EndGlobal
